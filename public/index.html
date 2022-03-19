@@ -10,6 +10,7 @@
 <body style="padding: 50px;">
     <div style="padding: 20px; background: ghostwhite;">
         <input type="file" name="" id="file-upload">
+        <a href="" id="file-location"></a>
     </div>
     <p>As soon as you choose a file, it directly get uploaded to the server. Check your console for permanent image url.</p>
     <script>
@@ -19,6 +20,7 @@
             formData.append('userImage', file);
             axios.post('/', formData).then(function(response) {
                 console.log(response.data);
+                document.getElementById('file-location').href = response.data.url;
             }).catch(function(error) {
                 console.log(error);
             });
