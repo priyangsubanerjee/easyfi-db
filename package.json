@@ -6,7 +6,7 @@
     "nodemon": "^2.0.15",
     "uuid": "^8.3.2"
   },
-  "name": "easybio-server",
+  "name": "nodejs-filestorage",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {

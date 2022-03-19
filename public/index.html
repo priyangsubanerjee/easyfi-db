@@ -7,8 +7,11 @@
     <title>Document</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.26.1/axios.js" integrity="sha512-MNW6IbpNuZZ2VH9ngFhzh6cUt8L/0rSVa60F8L22K1H72ro4Ki3M/816eSDLnhICu7vwH/+/yb8oB3BtBLhMsA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
-<body>
-    <input type="file" name="" id="file-upload">
+<body style="padding: 50px;">
+    <div style="padding: 20px; background: ghostwhite;">
+        <input type="file" name="" id="file-upload">
+    </div>
+    <p>As soon as you choose a file, it directly get uploaded to the server. Check your console for permanent image url.</p>
     <script>
         document.getElementById('file-upload').addEventListener('change', function(e) {
             var file = e.target.files[0];
