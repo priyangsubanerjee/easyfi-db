@@ -32,33 +32,33 @@
                 </div>
                 <div class="px-6 py-6 flex flex-col">
                     <p class="w-fit border-b pb-3"><span class="w-6 h-6 mr-2 inline-flex justify-center items-center bg-black rounded-full text-white">1</span>Upload a file</p>
-                    <p class="leading-7 text-gray-500 text-sm mt-3">Send a <span class="bg-gray-300 text-black py-[2px] px-2 text-xs rounded font-medium">POST</span> request to <span class="bg-gray-300 text-black py-[2px] px-2 text-sm rounded">https://myapi.com/uploadfile</span> endpoint with your form data.</p>
+                    <p class="leading-7 text-gray-500 text-sm mt-3">Send a <span class="bg-gray-300 text-black py-[2px] px-2 text-xs rounded font-medium">POST</span> request to <span class="bg-gray-300 text-black py-[2px] px-2 text-sm rounded">https://easyfidb.herokuapp.com</span> endpoint with your form data.</p>
                     <p class="mt-5 bg-gray-500 text-white w-fit px-2">Request</p>
-                    <pre  class="bg-gray-50 w-full p-3 text-sm mt-3 rounded leading-7"><code>const file = e.target.files[0];
+                    <pre  class="bg-gray-50 w-full p-3 text-sm mt-3 rounded leading-7 overflow-x-auto overflow-y-hidden"><code>const file = e.target.files[0];
 const formData = new FormData();
 formData.append('userImage', file);
-axios.post('https://myapi.com/uploadfile', formData)
+axios.post('https://easyfidb.herokuapp.com', formData)
     .then(res => {
         console.log(res)
 })</code></pre>
 <p class="mt-8 bg-gray-500 text-white w-fit px-2">Response</p>
-                    <pre  class="bg-gray-50 w-full p-3 text-sm mt-3 rounded leading-7"><code>{
-    fileUrl: "https://myapi.com/uploads/file.jpg",
-    fileName: "file.jpg",
+                    <pre  class="bg-gray-50 w-full p-3 text-sm mt-3 rounded leading-7 overflow-x-auto overflow-y-hidden"><code>{
+    fileUrl: "http://easyfidb.herokuapp.com/uploads/338ddd12-9c68-4881-bdf3-41f4bbeaf34d.png",
+    fileName: "copy.jpg",
     fileType: "image/jpeg",
-    fileSize: "1.5kb",
+    fileSize: "0.5kb",
 }
 </code></pre>
 
                     <p class="w-fit border-b pb-3 mt-10"><span class="w-6 h-6 mr-2 inline-flex justify-center items-center bg-black rounded-full text-white">2</span>Delete a file</p>
                     <p class="mt-5 bg-gray-500 text-white w-fit px-2">Request</p>
                     <pre  class="bg-gray-50 w-full p-3 text-sm mt-3 rounded leading-7 overflow-x-auto overflow-y-hidden"><code>const fileName = "ascccridoe-deds.jpg";
-axios.post('https://myapi.com/delete', JSON.stringify({name: fileName}))
+axios.post('http://easyfidb.herokuapp.com', JSON.stringify({name: fileName}))
     .then(res => {
         console.log(res)
 })</code></pre>
 <p class="mt-8 bg-gray-500 text-white w-fit px-2">Response</p>
-                    <pre  class="bg-gray-50 w-full p-3 text-sm mt-3 rounded leading-7"><code>{ "deleted": true }</code></pre>
+                    <pre  class="bg-gray-50 w-full p-3 text-sm mt-3 rounded leading-7 overflow-x-auto overflow-y-hidden"><code>{ "deleted": true }</code></pre>
                 </div>
             </div>
             <input hidden type="file" id="file-upload-input">

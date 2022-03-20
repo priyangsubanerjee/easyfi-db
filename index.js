@@ -40,7 +40,11 @@ app.post("/delete", (req, res) => {
   } else {
     res.send("not found");
   }
-  res.send("deleted");
+  res.status(200).json({
+    message: "success",
+    deleted: true,
+    fileName: name,
+  });
 });
 
 app.post("/upload-file", upload.single("file"), (req, res) => {
