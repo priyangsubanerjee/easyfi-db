@@ -37,7 +37,7 @@
                     <pre  class="bg-gray-50 w-full p-3 text-sm mt-3 rounded leading-7 overflow-x-auto overflow-y-hidden"><code>const file = e.target.files[0];
 const formData = new FormData();
 formData.append('userImage', file);
-axios.post('https://easyfidb.herokuapp.com', formData)
+axios.post('https://easyfidb.herokuapp.com/upload-file', formData)
     .then(res => {
         console.log(res)
 })</code></pre>
