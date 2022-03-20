@@ -43,7 +43,7 @@ app.post("/delete", (req, res) => {
   res.send("deleted");
 });
 
-app.post("/upload-image", upload.single("file"), (req, res) => {
+app.post("/upload-file", upload.single("file"), (req, res) => {
   console.log(req);
   const url = req.protocol + "://" + req.get("host") + "/";
   res.status(200).json({

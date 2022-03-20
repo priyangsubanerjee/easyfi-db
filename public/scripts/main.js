@@ -62,7 +62,7 @@ fileUploadInput.addEventListener("change", (e) => {
     }
     const formData = new FormData();
     formData.append("file", file);
-    axios.post("/upload-image", formData).then(function (response) {
+    axios.post("/upload-file", formData).then(function (response) {
       if (showQuickMenu.checked) {
         uploadedContainer.style.display = "block";
         uploadingContainer.style.display = "none";
