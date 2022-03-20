@@ -43,8 +43,15 @@ app.post("/delete", (req, res) => {
   res.send("deleted");
 });
 
-app.post("/upload-image", (req, res) => {
-  res.send("uploaded");
+app.post("/upload-image", upload.single("file"), (req, res) => {
+  console.log(req);
+  const url = req.protocol + "://" + req.get("host") + "/";
+  res.status(200).json({
+    fileUrl: url + req.file.path,
+    fileName: req.file.originalname,
+    fileType: req.file.mimetype,
+    fileSize: req.file.size / 1000 + "kb",
+  });
 });
 
 app.listen(port, () => {
