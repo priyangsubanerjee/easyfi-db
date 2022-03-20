@@ -66,6 +66,7 @@ fileUploadInput.addEventListener("change", (e) => {
         uploadedContainer.style.display = "block";
         fileUploadedAnchor.href = response.data.fileUrl;
         fileUploadedAnchor.innerHTML = response.data.fileName;
+        document.getElementById("preview-anchor").href = response.data.fileUrl;
       } else {
         uploadingParentLayer.style.display = "none";
         uploadingContainer.style.display = "none";

@@ -101,8 +101,9 @@ axios.post('http://easyfidb.herokuapp.com', JSON.stringify({name: fileName}))
                        File has been uploaded successfully. You can view your file by clicking on the link below.
                     </p>
                     <a target="_blank" class="mx-auto mt-6 block w-fit text-sm text-blue-500" href="" id="file-uploaded-anchor">View file</a>
-                    <div class="w-full flex mt-8">
-                        <button class="border border-black text-black px-8 py-2 rounded text-sm mx-auto hover:bg-black hover:text-white hover:shadow-2xl transition-all" id="close-upload-modal">Close</button>
+                    <div class="w-full flex mt-8 justify-center items-center">
+                        <a href="" target="_blank" id="preview-anchor" class="border border-black text-black px-8 py-2 mr-4 rounded text-sm hover:bg-black hover:text-white hover:shadow-2xl transition-all">Preview</a>
+                        <button class="border border-black text-black px-8 py-2 mr-4 rounded text-sm hover:bg-black hover:text-white hover:shadow-2xl transition-all" id="close-upload-modal">Close</button>
                     </div>
                 </div>
             </div>
