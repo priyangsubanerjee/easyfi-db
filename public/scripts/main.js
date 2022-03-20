@@ -189,6 +189,7 @@ const deleteFile = (fileUrl) => {
   axios.post("/delete", JSON.stringify({ name: fileName }), {
     headers: {
       "Content-Type": "application/json",
+      "Access-Control-Allow-Origin": "*",
     },
   });
 };

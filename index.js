@@ -7,7 +7,6 @@ const path = require("path");
 const { v4: uuidv4 } = require("uuid");
 const port = process.env.PORT || 3000;
 const multiparty = require("multiparty");
-const fs = require("fs");
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -21,6 +20,7 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 
 app.use(cors());
+app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, "public")));
 app.use("/uploads", express.static(path.join(__dirname, "./uploads")));
 
@@ -29,8 +29,9 @@ app.get("/", (req, res) => {
 });
 
 app.post("/delete", (req, res) => {
+  const fs = require("fs");
   const { name } = req.body;
-  var dir = "./uploads/" + name;
+  var dir = "uploads/" + name;
 
   if (fs.existsSync(dir)) {
     fs.rmSync("uploads/" + name, {
@@ -40,11 +41,7 @@ app.post("/delete", (req, res) => {
   } else {
     res.send("not found");
   }
-  res.status(200).json({
-    message: "success",
-    deleted: true,
-    fileName: name,
-  });
+  res.send("deleted");
 });
 
 app.post("/upload-file", upload.single("file"), (req, res) => {
