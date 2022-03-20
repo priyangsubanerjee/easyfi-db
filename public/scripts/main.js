@@ -45,11 +45,9 @@ fileUploadBox.addEventListener("click", () => {
 
 fileUploadInput.addEventListener("change", (e) => {
   if (e.target.files.length > 0) {
-    if (showQuickMenu.checked) {
-      uploadingParentLayer.style.display = "flex";
-      uploadingContainer.style.display = "block";
-      uploadedContainer.style.display = "none";
-    }
+    uploadingParentLayer.style.display = "flex";
+    uploadingContainer.style.display = "block";
+    uploadedContainer.style.display = "none";
 
     const file = e.target.files[0];
     const fileSize = file.size / 1024 / 1024;
@@ -64,10 +62,14 @@ fileUploadInput.addEventListener("change", (e) => {
     formData.append("file", file);
     axios.post("/upload-file", formData).then(function (response) {
       if (showQuickMenu.checked) {
-        uploadedContainer.style.display = "block";
         uploadingContainer.style.display = "none";
+        uploadedContainer.style.display = "block";
         fileUploadedAnchor.href = response.data.fileUrl;
         fileUploadedAnchor.innerHTML = response.data.fileName;
+      } else {
+        uploadingParentLayer.style.display = "none";
+        uploadingContainer.style.display = "none";
+        uploadedContainer.style.display = "block";
       }
 
       const file = new File(
