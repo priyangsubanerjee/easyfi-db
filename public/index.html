@@ -4,27 +4,109 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>EasyFi Db</title>
+    <script defer src="./scripts/main.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.26.1/axios.js" integrity="sha512-MNW6IbpNuZZ2VH9ngFhzh6cUt8L/0rSVa60F8L22K1H72ro4Ki3M/816eSDLnhICu7vwH/+/yb8oB3BtBLhMsA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
-<body style="padding: 50px;">
-    <div style="padding: 20px; background: ghostwhite;">
-        <input type="file" name="" id="file-upload">
-        <a href="" id="file-location"></a>
+<body>
+    <div class="px-6 py-3 border-b flex items-center">
+        <img src="http://media.graphcms.com/atYPm4SWSIu1j3WY4UGw" class="h-10 w-10 mr-3" alt="">
+        <div>
+            <h1 class="font-semibold text-xl">EasyFi DB</h1>
+            <p class="text-xs text-gray-500 mt-1">Easy file storage api for your project.</p>
+        </div>
     </div>
-    <p>As soon as you choose a file, it directly get uploaded to the server. Check your console for permanent image url.</p>
-    <script>
-        document.getElementById('file-upload').addEventListener('change', function(e) {
-            var file = e.target.files[0];
-            var formData = new FormData();
-            formData.append('userImage', file);
-            axios.post('/', formData).then(function(response) {
-                console.log(response.data);
-                document.getElementById('file-location').href = response.data.url;
-            }).catch(function(error) {
-                console.log(error);
-            });
-        });
-    </script>
+
+    <div class="flex w-full mt-8 p-6">
+        <div class="w-[40%] flex flex-col justify-center mx-6">
+            <div id="file-upload-box" class="w-full h-[300px] border-2 rounded border-dashed flex flex-col items-center justify-center cursor-pointer">
+                <img class="w-20 h-20" src="https://cdn-icons-png.flaticon.com/512/126/126477.png" alt="">
+                <p class="mt-3 text-gray-400 text-sm">Click to upload files.</p>
+            </div>
+            <div class="mt-8 border rounded overflow-hidden">
+                <div class="bg-gray-50 px-6 py-4">
+                    <h1 class="text-xl font-semibold">API Documentation.</h1>
+                    <p class="text-sm text-gray-500 mt-2">Developers can upload files (one file at a time) by sending <span class="bg-gray-300 text-black py-[2px] px-2 text-xs rounded font-medium">POST</span> request.</p>
+                    <p class="mt-2 text-sm">Status: <span class="ml-2 w-3 h-3 bg-red-500 inline-flex items-center justify-center rounded-full text-red-500 ">.</span> Not-operational</p>
+                </div>
+                <div class="px-6 py-6 flex flex-col">
+                    <p class="w-fit border-b pb-3"><span class="w-6 h-6 mr-2 inline-flex justify-center items-center bg-black rounded-full text-white">1</span>Upload a file</p>
+                    <p class="leading-7 text-gray-500 text-sm mt-3">Send a <span class="bg-gray-300 text-black py-[2px] px-2 text-xs rounded font-medium">POST</span> request to <span class="bg-gray-300 text-black py-[2px] px-2 text-sm rounded">https://myapi.com/uploadfile</span> endpoint with your form data.</p>
+                    <p class="mt-5 bg-gray-500 text-white w-fit px-2">Request</p>
+                    <pre  class="bg-gray-50 w-full p-3 text-sm mt-3 rounded leading-7"><code>const file = e.target.files[0];
+const formData = new FormData();
+formData.append('userImage', file);
+axios.post('https://myapi.com/uploadfile', formData)
+    .then(res => {
+        console.log(res)
+})</code></pre>
+<p class="mt-8 bg-gray-500 text-white w-fit px-2">Response</p>
+                    <pre  class="bg-gray-50 w-full p-3 text-sm mt-3 rounded leading-7"><code>{
+    fileUrl: "https://myapi.com/uploads/file.jpg",
+    fileName: "file.jpg",
+    fileType: "image/jpeg",
+    fileSize: "1.5kb",
+}
+</code></pre>
+
+                    <p class="w-fit border-b pb-3 mt-10"><span class="w-6 h-6 mr-2 inline-flex justify-center items-center bg-black rounded-full text-white">2</span>Delete a file</p>
+                    <p class="mt-5 bg-gray-500 text-white w-fit px-2">Request</p>
+                    <pre  class="bg-gray-50 w-full p-3 text-sm mt-3 rounded leading-7 overflow-x-auto overflow-y-hidden"><code>const fileName = "ascccridoe-deds.jpg";
+axios.post('https://myapi.com/delete', JSON.stringify({name: fileName}))
+    .then(res => {
+        console.log(res)
+})</code></pre>
+<p class="mt-8 bg-gray-500 text-white w-fit px-2">Response</p>
+                    <pre  class="bg-gray-50 w-full p-3 text-sm mt-3 rounded leading-7"><code>{ "deleted": true }</code></pre>
+                </div>
+            </div>
+            <input hidden type="file" id="file-upload-input">
+        </div>
+        <div class="w-[60%] border rounded mx-6 flex flex-col overflow-hidden h-fit min-h-[300px]">
+            <div class="flex items-center bg-gray-50 py-3 px-6">
+                <img class="w-6 h-6 mr-2" src="https://cdn.iconscout.com/icon/free/png-256/recent-1-119532.png" alt="">
+                <h1 class="">Recent uploads</h1>
+    
+                <input type="checkbox" class="ml-auto" id="show-modal-while-uploading">
+                <label class="text-sm ml-2 select-none cursor-pointer" for="show-modal-while-uploading">Show quick menu?</label>
+                <input type="checkbox" class="ml-6" id="ask-before-deleting">
+                <label class="text-sm ml-2 select-none cursor-pointer" for="ask-before-deleting">Ask before deleting?</label>
+            </div>
+            <div class="px-6 h-full text-gray-500 min-h-[200px] text-sm leading-7 hidden items-center justify-center" id="uploaded-files-empty">
+                No files to show.
+            </div>
+            <div class="flex flex-col" id="uploaded-files">
+                
+            </div>
+        </div>
+    </div>
+    <div class="fixed top-0 left-0 h-full w-full bg-[#00000080] hidden" id="uploading-parent-layer">
+        <div class="w-[500px] min-h-[530px] h-auto bg-white m-auto rounded-lg overflow-hidden flex flex-col">
+            <div id="uploading-container" style="display: block;">
+                <img src="https://cdn.dribbble.com/users/4908/screenshots/2570659/rocket.gif" class="w-[250px] h-[250px] mx-auto mt-16 rounded-full" alt="">
+                <div>
+                    <h1 class="mt-12 font-semibold text-black text-2xl text-center">Uploading File</h1>
+                    <p class="text-center text-gray-500 text-sm mt-4">
+                        Please wait while we upload your file.
+                    </p>
+                    <p class="text-center text-blue-500 text-sm mt-6 cursor-pointer">Terms &amp; Conditions</p>
+                </div>
+            </div>
+            <div id="uploaded-container" style="display: none;">
+                <img src="https://icons.veryicon.com/png/o/miscellaneous/cloud-call-center/success-24.png" class="w-[150px] h-[150px] mx-auto mt-16 rounded-full" alt="">
+                <div>
+                    <h1 class="mt-12 font-semibold text-black text-2xl text-center">File Uploaded</h1>
+                    <p class="text-center text-gray-500 text-sm mt-4 px-8 leading-7">
+                       File has been uploaded successfully. You can view your file by clicking on the link below.
+                    </p>
+                    <a target="_blank" class="mx-auto mt-6 block w-fit text-sm text-blue-500" href="" id="file-uploaded-anchor">View file</a>
+                    <div class="w-full flex mt-8">
+                        <button class="border border-black text-black px-8 py-2 rounded text-sm mx-auto hover:bg-black hover:text-white hover:shadow-2xl transition-all" id="close-upload-modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
