@@ -28,23 +28,7 @@ app.get("/", (req, res) => {
 });
 
 app.post("/delete", (req, res) => {
-  const fs = require("fs");
-  const { name } = req.body;
-  var dir = "uploads/" + name;
-
-  if (fs.existsSync(dir)) {
-    fs.rmSync("uploads/" + name, {
-      recursive: true,
-      force: true,
-    });
-  } else {
-    res.send("not found");
-  }
-  res.status(200).json({
-    message: "success",
-    deleted: true,
-    fileName: name,
-  });
+  res.send("delete");
 });
 
 app.post("/upload-file", upload.single("file"), (req, res) => {
