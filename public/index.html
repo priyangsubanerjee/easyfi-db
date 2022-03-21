@@ -4,7 +4,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EasyFi Db</title>
+    <title>Free file hosting solution || EasyFi DB</title>
+    <link rel="icon" type="image/x-icon" href="./icons/database.png">
+    <link rel="apple-touch-icon" href="./icons/database.png">
+
     <script defer src="./scripts/main.js"></script>
     <script defer src="./scripts/controller.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
@@ -17,6 +20,10 @@
             <h1 class="font-semibold text-xl">EasyFi DB</h1>
             <p class="text-xs text-gray-500 mt-1">Easy file storage api for your project.</p>
         </div>
+        <ul class="flex items-center ml-auto">
+            <li><a class="text-gray-500 text-sm mr-4 hover:text-black transition-all cursor-pointer" href="#api-docs-container">API</a></li>
+            <li><a class="text-gray-500 text-sm hover:text-black transition-all cursor-pointer" href="#faq-container">About</a></li>
+        </ul>
     </div>
 
     <div class="flex w-full mt-8 p-6">
@@ -75,7 +82,7 @@ axios.post('http://easyfidb.herokuapp.com/delete', JSON.stringify({id: fileId}))
                     <div class="my-6">
                         <details class="cursor-pointer bg-gray-100 px-3 py-2 rounded-sm">
                             <summary class="text-sm">How can i make use of it?</summary>
-                            <p class="text-sm text-gray-500 mt-2 leading-6 border-t pt-2">If you are a developer, then this is the ultimate tool for storing your custom icons, pdf's and svg's. I hope you got it right?</p>
+                            <p class="text-sm text-gray-500 mt-2 leading-6 border-t pt-2">If you are a developer, then this is the ultimate tool for storing your custom icons, pdf's and svg's. I hope you got it? right?</p>
                         </details>
                         <details class="cursor-pointer bg-gray-100 px-3 py-2 rounded-sm mt-4">
                             <summary class="text-sm">Example use cases?</summary>
