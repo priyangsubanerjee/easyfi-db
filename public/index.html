@@ -38,8 +38,8 @@
                     <p class="mt-5 bg-gray-500 text-white w-fit px-2">Request</p>
                     <pre  class="bg-gray-50 w-full p-3 text-sm mt-3 rounded leading-7 overflow-x-auto overflow-y-hidden"><code>const file = e.target.files[0];
 const formData = new FormData();
-formData.append('userImage', file);
-axios.post('https://easyfidb.herokuapp.com/upload-file', formData)
+formData.append('file', file);
+axios.post('https://easyfidb.herokuapp.com/upload', formData)
     .then(res => {
         console.log(res)
 })</code></pre>
@@ -49,18 +49,19 @@ axios.post('https://easyfidb.herokuapp.com/upload-file', formData)
     "fileName": "diamond_logo.png",
     "fileType": "image/png",
     "fileSize": "28.74kb"
+    "fileId": "62384960ef213ca454da612b"
 }
 </code></pre>
 
                     <p class="w-fit border-b pb-3 mt-10"><span class="w-6 h-6 mr-2 inline-flex justify-center items-center bg-black rounded-full text-white">2</span>Delete a file</p>
                     <p class="mt-5 bg-gray-500 text-white w-fit px-2">Request</p>
-                    <pre  class="bg-gray-50 w-full p-3 text-sm mt-3 rounded leading-7 overflow-x-auto overflow-y-hidden"><code>const fileName = "ascccridoe-deds.jpg";
-axios.post('http://easyfidb.herokuapp.com', JSON.stringify({name: fileName}))
+                    <pre  class="bg-gray-50 w-full p-3 text-sm mt-3 rounded leading-7 overflow-x-auto overflow-y-hidden"><code>const fileId = "62384960ef213ca454da612b";
+axios.post('http://easyfidb.herokuapp.com/delete', JSON.stringify({id: fileId}))
     .then(res => {
         console.log(res)
 })</code></pre>
 <p class="mt-8 bg-gray-500 text-white w-fit px-2">Response</p>
-                    <pre  class="bg-gray-50 w-full p-3 text-sm mt-3 mb-6 rounded leading-7 overflow-x-auto overflow-y-hidden"><code>{ "deleted": true }</code></pre>
+                    <pre  class="bg-gray-50 w-full p-3 text-sm mt-3 mb-6 rounded leading-7 overflow-x-auto overflow-y-hidden"><code>{ "message": "file deleted successfully" }</code></pre>
                 </div>
             </div>
             <div class="mt-8 border rounded overflow-hidden">
