@@ -41,18 +41,18 @@
                 </div>
                 <div id="api-docs-container" class="px-6 flex flex-col h-0 overflow-hidden">
                     <p class="w-fit border-b pb-3"><span class="w-6 h-6 mr-2 mt-6 inline-flex justify-center items-center bg-black rounded-full text-white">1</span>Upload a file</p>
-                    <p class="leading-7 text-gray-500 text-sm mt-3">Send a <span class="bg-gray-300 text-black py-[2px] px-2 text-xs rounded font-medium">POST</span> request to <span class="bg-gray-300 text-black py-[2px] px-2 text-sm rounded">https://easyfidb.herokuapp.com</span> endpoint with your form data.</p>
+                    <p class="leading-7 text-gray-500 text-sm mt-3">Send a <span class="bg-gray-300 text-black py-[2px] px-2 text-xs rounded font-medium">POST</span> request to <span class="bg-gray-300 text-black py-[2px] px-2 text-sm rounded">https://easyfidb.vercel.app</span> endpoint with your form data.</p>
                     <p class="mt-5 bg-gray-500 text-white w-fit px-2">Request</p>
                     <pre  class="bg-gray-50 w-full p-3 text-sm mt-3 rounded leading-7 overflow-x-auto overflow-y-hidden"><code>const file = e.target.files[0];
 const formData = new FormData();
 formData.append('file', file);
-axios.post('https://easyfidb.herokuapp.com/upload', formData)
+axios.post('https://easyfidb.vercel.app/upload', formData)
     .then(res => {
         console.log(res)
 })</code></pre>
 <p class="mt-8 bg-gray-500 text-white w-fit px-2">Response</p>
                     <pre  class="bg-gray-50 w-full p-3 text-sm mt-3 rounded leading-7 overflow-x-auto overflow-y-hidden"><code>{
-    "fileUrl": "http://easyfidb.herokuapp.com/uploads/9a0c020a-6b2f-4460-8dde-d42e8a5e1597.png",
+    "fileUrl": "http://easyfidb.vercel.app/uploads/9a0c020a-6b2f-4460-8dde-d42e8a5e1597.png",
     "fileName": "diamond_logo.png",
     "fileType": "image/png",
     "fileSize": "28.74kb"
@@ -63,7 +63,7 @@ axios.post('https://easyfidb.herokuapp.com/upload', formData)
                     <p class="w-fit border-b pb-3 mt-10"><span class="w-6 h-6 mr-2 inline-flex justify-center items-center bg-black rounded-full text-white">2</span>Delete a file</p>
                     <p class="mt-5 bg-gray-500 text-white w-fit px-2">Request</p>
                     <pre  class="bg-gray-50 w-full p-3 text-sm mt-3 rounded leading-7 overflow-x-auto overflow-y-hidden"><code>const fileId = "62384960ef213ca454da612b";
-axios.post('http://easyfidb.herokuapp.com/delete', JSON.stringify({id: fileId}))
+axios.post('http://easyfidb.vercel.app/delete', JSON.stringify({id: fileId}))
     .then(res => {
         console.log(res)
 })</code></pre>
