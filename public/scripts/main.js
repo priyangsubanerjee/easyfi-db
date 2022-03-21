@@ -231,7 +231,7 @@ window.onload = () => {
     uploadedFilesContainerEmpty.style.display = "none";
     files.forEach((file) => {
       uploadedFilesContainer.innerHTML += getTemplate(
-        new File(file.name, file.url, file.date)
+        new File(file.name, file.url, file.id, file.date)
       );
     });
   } else {
