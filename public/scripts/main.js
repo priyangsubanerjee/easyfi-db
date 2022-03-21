@@ -62,6 +62,7 @@ fileUploadInput.addEventListener("change", (e) => {
     uploadedContainer.style.display = "none";
 
     const file = e.target.files[0];
+    fileUploadInput.value = "";
     const fileSize = file.size / 1024 / 1024;
     if (fileSize > 10) {
       alert("File size is too big. Max file size is 10MB");
@@ -79,7 +80,6 @@ fileUploadInput.addEventListener("change", (e) => {
         fileUploadedAnchor.href = response.data.fileUrl;
         fileUploadedAnchor.innerHTML = response.data.fileName;
         document.getElementById("preview-anchor").href = response.data.fileUrl;
-        fileUploadInput.value = "";
       } else {
         uploadingParentLayer.style.display = "none";
         uploadingContainer.style.display = "none";
