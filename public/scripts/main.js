@@ -1,7 +1,8 @@
 class File {
-  constructor(name, url, date) {
+  constructor(name, url, id, date) {
     this.name = name;
     this.url = url;
+    this.id = id;
     this.date = date;
   }
 
@@ -11,6 +12,10 @@ class File {
 
   getUrl() {
     return this.url;
+  }
+
+  getId() {
+    return this.id;
   }
 
   getDate() {
@@ -51,8 +56,8 @@ fileUploadInput.addEventListener("change", (e) => {
 
     const file = e.target.files[0];
     const fileSize = file.size / 1024 / 1024;
-    if (fileSize > 20) {
-      alert("File size is too big. Max file size is 20MB");
+    if (fileSize > 10) {
+      alert("File size is too big. Max file size is 10MB");
       uploadingParentLayer.style.display = "none";
       uploadingContainer.style.display = "none";
       uploadedContainer.style.display = "block";
@@ -60,13 +65,14 @@ fileUploadInput.addEventListener("change", (e) => {
     }
     const formData = new FormData();
     formData.append("file", file);
-    axios.post("/upload-file", formData).then(function (response) {
+    axios.post("/upload", formData).then(function (response) {
       if (showQuickMenu.checked) {
         uploadingContainer.style.display = "none";
         uploadedContainer.style.display = "block";
         fileUploadedAnchor.href = response.data.fileUrl;
         fileUploadedAnchor.innerHTML = response.data.fileName;
         document.getElementById("preview-anchor").href = response.data.fileUrl;
+        fileUploadInput.value = "";
       } else {
         uploadingParentLayer.style.display = "none";
         uploadingContainer.style.display = "none";
@@ -76,6 +82,7 @@ fileUploadInput.addEventListener("change", (e) => {
       const file = new File(
         response.data.fileName,
         response.data.fileUrl,
+        response.data.fileId,
         new Date().toLocaleString()
       );
 
@@ -103,12 +110,12 @@ uploadedFilesContainer.addEventListener("click", (e) => {
       ? JSON.parse(localStorage.getItem("files"))
       : [];
 
-    const fileUrl = e.target.getAttribute("file-url");
-    const index = files.findIndex((file) => file.url === fileUrl);
+    const id = e.target.getAttribute("file-id");
+    const index = files.findIndex((file) => file.id === id);
     files.splice(index, 1);
     localStorage.setItem("files", JSON.stringify(files));
     updateUploads();
-    deleteFile(fileUrl);
+    deleteFile(id);
   } else if (e.target.classList.contains("copy")) {
     const fileUrl = e.target.getAttribute("file-url");
     copyToClipboard(fileUrl, e.target);
@@ -151,7 +158,7 @@ const getTemplate = (file) => {
         </div>
         <div class="whitespace-nowrap flex items-center cursor-pointer">
             <img src="./icons/copy.png" file-url="${file.getUrl()}" class="w-5 h-5 mr-4 copy" alt="">
-            <img src="./icons/delete.png" file-url="${file.getUrl()}" class="w-5 h-5 mr-3 delete" alt="">
+            <img src="./icons/delete.png" file-id="${file.getId()}" class="w-5 h-5 mr-3 delete" alt="">
         </div>
     </div>`;
 
@@ -178,7 +185,7 @@ const updateUploads = () => {
     uploadedFilesContainerEmpty.style.display = "none";
     files.forEach((file) => {
       uploadedFilesContainer.innerHTML += getTemplate(
-        new File(file.name, file.url, file.date)
+        new File(file.name, file.url, file.id, file.date)
       );
     });
   } else {
@@ -187,9 +194,8 @@ const updateUploads = () => {
   }
 };
 
-const deleteFile = (fileUrl) => {
-  const fileName = fileUrl.split("/")[fileUrl.split("/").length - 1];
-  axios.post("/delete", JSON.stringify({ name: fileName }), {
+const deleteFile = (id) => {
+  axios.post("/delete", JSON.stringify({ id }), {
     headers: {
       "Content-Type": "application/json",
       "Access-Control-Allow-Origin": "*",

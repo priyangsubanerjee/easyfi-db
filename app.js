@@ -3,7 +3,6 @@ const app = express();
 const mongoose = require("mongoose");
 const multer = require("multer");
 const path = require("path");
-const cors = require("cors");
 const dbConnect = require("./dbConnect");
 const { GridFsStorage } = require("multer-gridfs-storage");
 const { v4: uuidv4 } = require("uuid");
@@ -23,14 +22,12 @@ mongoose.connection.on("connected", () => {
   });
 });
 
-app.use(cors());
 app.use(express.json());
 app.use(
   express.urlencoded({
     extended: false,
   })
 );
-app.use(express.static(path.join(__dirname, "public")));
 
 const storage = new GridFsStorage({
   url: url,
@@ -70,10 +67,8 @@ app.get("/download/:filename", (req, res) => {
 
 app.post("/upload", upload.single("file"), (req, res) => {
   const file = req.file;
-  const path = file.filename;
-  const url = req.protocol + "://" + req.get("host") + "/download/" + path;
   res.status(200).json({
-    fileUrl: url,
+    fileUrl: `http://localhost:3000/fileinfo/${file.filename}`,
     fileName: file.originalname,
     fileType: file.mimetype,
     fileSize: file.size / 1000 + "kb",
