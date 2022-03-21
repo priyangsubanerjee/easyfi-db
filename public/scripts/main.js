@@ -45,7 +45,14 @@ const showQuickMenu = document.getElementById("show-modal-while-uploading");
 // Event Listeners
 
 fileUploadBox.addEventListener("click", () => {
-  fileUploadInput.click();
+  const files = localStorage.getItem("files")
+    ? JSON.parse(localStorage.getItem("files"))
+    : [];
+  if (files.length < 10) {
+    fileUploadInput.click();
+  } else {
+    alert("You can have reached the maximum number of 10 files");
+  }
 });
 
 fileUploadInput.addEventListener("change", (e) => {
