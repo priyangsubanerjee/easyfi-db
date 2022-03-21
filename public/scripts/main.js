@@ -48,11 +48,7 @@ fileUploadBox.addEventListener("click", () => {
   const files = localStorage.getItem("files")
     ? JSON.parse(localStorage.getItem("files"))
     : [];
-  if (files.length < 10) {
-    fileUploadInput.click();
-  } else {
-    alert("You can have reached the maximum number of 10 files");
-  }
+  fileUploadInput.click();
 });
 
 fileUploadInput.addEventListener("change", (e) => {

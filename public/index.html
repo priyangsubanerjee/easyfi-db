@@ -12,7 +12,7 @@
 </head>
 <body>
     <div class="px-6 py-3 border-r border-b flex items-center">
-        <img src="http://media.graphcms.com/atYPm4SWSIu1j3WY4UGw" class="h-8 w-8 mr-3" alt="">
+        <img src="./icons/database.png" class="h-8 w-8 mr-3" alt="">
         <div>
             <h1 class="font-semibold text-xl">EasyFi DB</h1>
             <p class="text-xs text-gray-500 mt-1">Easy file storage api for your project.</p>
@@ -61,6 +61,36 @@ axios.post('http://easyfidb.herokuapp.com', JSON.stringify({name: fileName}))
 })</code></pre>
 <p class="mt-8 bg-gray-500 text-white w-fit px-2">Response</p>
                     <pre  class="bg-gray-50 w-full p-3 text-sm mt-3 mb-6 rounded leading-7 overflow-x-auto overflow-y-hidden"><code>{ "deleted": true }</code></pre>
+                </div>
+            </div>
+            <div class="mt-8 border rounded overflow-hidden">
+                <div class="bg-gray-50 px-6 py-4 flex flex-col">
+                    <h1 class="text-xl font-semibold">About</h1>
+                    <p class="text-sm text-gray-500 mt-2 leading-6"><span class="bg-gray-300 text-black py-[2px] px-2 text-sm rounded">EasiFy DB</span> is a free image storage API is built to help developers work with remote data & reliable file hosting service to integrate them with your existing workflows.</p>
+                    <button id="view-faq" class="text-sm text-gray-100 px-2 py-1 bg-gray-800 rounded mt-4 ml-auto">View F.A.Q</button>
+                </div>
+                <div id="faq-container" class="px-6 h-0 overflow-hidden">
+                    <p class="w-fit border-b block py-3"><span class="w-6 h-6 mr-2 mt-6 inline-flex justify-center items-center bg-black rounded-full text-white">1</span>F.A.Q</p>
+                    <div class="my-6">
+                        <details class="cursor-pointer bg-gray-100 px-3 py-2 rounded-sm">
+                            <summary class="text-sm">How can i make use of it?</summary>
+                            <p class="text-sm text-gray-500 mt-2 leading-6 border-t pt-2">If you are a developer, then this is the ultimate tool for storing your custom icons, pdf's and svg's. I hope you got it right?</p>
+                        </details>
+                        <details class="cursor-pointer bg-gray-100 px-3 py-2 rounded-sm mt-4">
+                            <summary class="text-sm">Example use cases?</summary>
+                            <ul class="list-disc m-0 px-5">
+                                <li class="text-sm text-gray-500 mt-2 leading-6 border-t pt-2">You can store your users profile picture and get back the permanent image url.</li>
+                                <li class="text-sm text-gray-500 mt-2 leading-6">You can store your custom icons and get back the url.</li>
+                                <li class="text-sm text-gray-500 mt-2 leading-6">What about storing JSON? You can do that too.</li>
+                                <li class="text-sm text-gray-500 mt-2 leading-6">None the less you can store code files too. (except .js)</li>
+                                
+                            </ul>
+                        </details>
+                        <details class="cursor-pointer bg-gray-100 px-3 py-2 rounded-sm mt-4">
+                            <summary class="text-sm">Are upload's free?</summary>
+                            <p class="text-sm text-gray-500 mt-2 leading-6 border-t pt-2">Yes. All uploads are currently free. We may introduce paid plans later.</p>
+                        </details>
+                    </div>
                 </div>
             </div>
             <input hidden type="file" id="file-upload-input">
@@ -115,6 +145,9 @@ axios.post('http://easyfidb.herokuapp.com', JSON.stringify({name: fileName}))
         <img src="./icons/laptop-screen.png" alt="" class="w-36 h-36">
         <h1 class="font-semibold text-2xl mt-6">Screen size not supported</h1>
         <p class="text-sm text-gray-500 mt-3 text-center leading-6">Our we currently don't support small screens. Please use a laptop/desktop to view this page.</p>
+    </div>
+    <div class="p-3 bg-black mt-8 flex justify-center items-center">
+        <p class="text-sm text-gray-400">Made with &hearts; Developed by <a class="text-white" href="https://www.linkedin.com/in/priyangsu-banerjee/" target="_blank">@priyangsu banerjee</a>. Hosted on <a target="_blank" class="text-white" href="https://heroku.com">@heroku</a></p>
     </div>
 </body>
 </html>
