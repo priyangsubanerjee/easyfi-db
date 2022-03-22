@@ -19,7 +19,7 @@ Developers can upload files (one file at a time) by sending POST request.
   - `npm i axios`
   - `File object inside FormData()`
   
-  ### `Request: `
+  #### `Request: `
   ```bash
   const file = e.target.files[0];
   const formData = new FormData();
@@ -30,7 +30,7 @@ Developers can upload files (one file at a time) by sending POST request.
   })
   ```
 
-  ### `Response: `
+  #### `Response: `
   ```bash
   {
     "fileUrl": "http://easyfidb.herokuapp.com/uploads/9a0c020a-6b2f-4460-8dde-d42e8a5e1597.png",
