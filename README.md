@@ -48,7 +48,7 @@ Developers can upload files (one file at a time) by sending POST request.
   - `npm i axios`
   - `fileId` we got it from `File upload` response
   
-  ### `Request: `
+  #### `Request: `
   ```bash
   const fileId = "62384960ef213ca454da612b";
   axios.post('http://easyfidb.herokuapp.com/delete', JSON.stringify({id: fileId}))
@@ -57,7 +57,7 @@ Developers can upload files (one file at a time) by sending POST request.
   })
   ```
 
-  ### `Response: `
+  #### `Response: `
   ```bash
   { "message": "file deleted successfully" }
   ```
