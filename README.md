@@ -18,8 +18,6 @@ Developers can upload files (one file at a time) by sending POST request.
   Requirements
   - `npm i axios`
   - `File object inside FormData()`
-
-  ### Example code:
   
   ### `Request: `
   ```bash
@@ -49,8 +47,6 @@ Developers can upload files (one file at a time) by sending POST request.
   Requirements
   - `npm i axios`
   - `fileId` we got it from `File upload` response
-
-  ### Example code:
   
   ### `Request: `
   ```bash
