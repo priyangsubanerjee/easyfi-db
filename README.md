@@ -9,11 +9,11 @@ This free file storage API is built to help developers work with remote data & q
 - 👔 [@priyangsubanerjee](https://www.github.com/priyangsubanerjee)
 
 
-## 🔐 API Documentation
+## API Documentation
 
 Developers can upload files (one file at a time) by sending POST request.
 
-- ⬆️ Upload a file
+- Upload a file
   -
   Requirements
   - `npm i axios`
@@ -44,7 +44,7 @@ Developers can upload files (one file at a time) by sending POST request.
   ```
 
 
-- 🗑 Delete a file
+- Delete a file
   -
   Requirements
   - `npm i axios`
@@ -69,13 +69,13 @@ Developers can upload files (one file at a time) by sending POST request.
 
 ## Features
 
-- 🔑 No API key is required to upload a file.
-- 💰 Uploads are completely free as of now.
-- 📱 Cross platform
+- No API key is required to upload a file.
+- Uploads are completely free as of now.
+- Cross platform
 
 ## Use cases
 
-- 💁‍♀️ Developers can use it to save clients avatar.
-- 📁 Save a temporary file to be used later in the session.
-- ❤️ We would like to hear more from you.
+- Developers can use it to save clients avatar.
+- Save a temporary file to be used later in the session.
+- We would like to hear more from you.
 
