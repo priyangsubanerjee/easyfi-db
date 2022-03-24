@@ -9,19 +9,17 @@ This free file storage API is built to help developers work with remote data & q
 - 👔 [@priyangsubanerjee](https://www.github.com/priyangsubanerjee)
 
 
-## 🔐 API Documentation
+## API Documentation
 
 Developers can upload files (one file at a time) by sending POST request.
 
-- ⬆️ Upload a file
+- Upload a file
   -
   Requirements
   - `npm i axios`
   - `File object inside FormData()`
-
-  ### Example code:
   
-  ### `Request: `
+  #### `Request: `
   ```bash
   const file = e.target.files[0];
   const formData = new FormData();
@@ -32,7 +30,7 @@ Developers can upload files (one file at a time) by sending POST request.
   })
   ```
 
-  ### `Response: `
+  #### `Response: `
   ```bash
   {
     "fileUrl": "http://easyfidb.herokuapp.com/uploads/9a0c020a-6b2f-4460-8dde-d42e8a5e1597.png",
@@ -44,15 +42,13 @@ Developers can upload files (one file at a time) by sending POST request.
   ```
 
 
-- 🗑 Delete a file
+- Delete a file
   -
   Requirements
   - `npm i axios`
   - `fileId` we got it from `File upload` response
-
-  ### Example code:
   
-  ### `Request: `
+  #### `Request: `
   ```bash
   const fileId = "62384960ef213ca454da612b";
   axios.post('http://easyfidb.herokuapp.com/delete', JSON.stringify({id: fileId}))
@@ -61,7 +57,7 @@ Developers can upload files (one file at a time) by sending POST request.
   })
   ```
 
-  ### `Response: `
+  #### `Response: `
   ```bash
   { "message": "file deleted successfully" }
   ```
@@ -69,13 +65,13 @@ Developers can upload files (one file at a time) by sending POST request.
 
 ## Features
 
-- 🔑 No API key is required to upload a file.
-- 💰 Uploads are completely free as of now.
-- 📱 Cross platform
+- No API key is required to upload a file.
+- Uploads are completely free as of now.
+- Cross platform
 
 ## Use cases
 
-- 💁‍♀️ Developers can use it to save clients avatar.
-- 📁 Save a temporary file to be used later in the session.
-- ❤️ We would like to hear more from you.
+- Developers can use it to save clients avatar.
+- Save a temporary file to be used later in the session.
+- We would like to hear more from you.
 
