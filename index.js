@@ -71,7 +71,7 @@ app.get("/download/:filename", (req, res) => {
 app.post("/upload", upload.single("file"), (req, res) => {
   const file = req.file;
   const path = file.filename;
-  const url = req.protocol + "://" + req.get("host") + "/download/" + path;
+  const url = "https://" + req.get("host") + "/download/" + path;
   res.status(200).json({
     fileUrl: url,
     fileName: file.originalname,
